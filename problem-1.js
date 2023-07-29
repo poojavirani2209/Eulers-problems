@@ -40,10 +40,52 @@ function solution1(number) {
   return sum;
 }
 
+function solution2(number) {
+  let sum=0
+  let i=1;
+  while(true){
+      let num1 = 3*i;
+      let num2 = 5*i;
+      
+      if(num1>=number){num1=0}
+      if(num2>=number){num2=0}
+      
+      if(num1==0 && num2==0)
+      {break;}
+      
+      if(num2%3!==0){
+          sum = sum+num1+num2;
+      }
+      else{
+          sum=sum+num1;
+      }
+      i++;
+  }
+  return sum;
+}
+
+function sumOfmultiples(number,toBeDividedBy)
+{
+  let possibleMultiples = Math.floor((number-1)/toBeDividedBy);
+  return toBeDividedBy * ((possibleMultiples*(possibleMultiples+1))/2)
+}
+
+function solution3(number) {
+  return sumOfmultiples(number,3) + sumOfmultiples(number,5)-sumOfmultiples(number,15);
+}
+
 console.time();
 console.log(bruteForceSolution(1000));
 console.timeEnd();
 
 console.time();
 console.log(solution1(1000));
+console.timeEnd();
+
+console.time();
+console.log(solution2(1000));
+console.timeEnd();
+
+console.time();
+console.log(solution3(1000));
 console.timeEnd();
